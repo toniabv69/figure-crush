@@ -4,5 +4,7 @@ dist/
 .godot/
 /android/
 .import/
+/Scenes/Menus/Testing
+/Scripts/Menus/Testing
 
 
