@@ -6,7 +6,6 @@ var player_data: Dictionary = {}
 var player_id: int = -1
 
 func load_stored_credentials():
-	# Load from local storage
 	var file: FileAccess = FileAccess.open("user://player_token.json", FileAccess.READ)
 	if file:
 		var data: Variant = JSON.parse_string(file.get_as_text())
@@ -15,7 +14,6 @@ func load_stored_credentials():
 		player_id = player_data.get("id", -1)
 
 func save_credentials(token: String, player: Dictionary):
-	# Save token and player data locally
 	var data: Dictionary = {
 		"token": token,
 		"player": player

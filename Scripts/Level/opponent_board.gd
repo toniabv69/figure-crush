@@ -32,17 +32,13 @@ func set_blocked_spaces():
 		spaces[entry["y"]][entry["x"]].blocked = true
 		
 func scale_grid_to_screen():
-	# Ensure the GridContainer matches the Board's size
 	grid.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	
-	# We must wait for the container to update its size or use the parent's size
 	var board_size = size 
 	
-	# Account for separation if you haven't set them to 0
 	var h_sep = grid.get_theme_constant("h_separation")
 	var v_sep = grid.get_theme_constant("v_separation")
 	
-	# Calculate cell size subtracting the gaps between cells
 	var cell_width = (board_size.x - (h_sep * (width - 1))) / width
 	var cell_height = (board_size.y - (v_sep * (height - 1))) / height
 	var cell_size = Vector2(cell_width, cell_height)

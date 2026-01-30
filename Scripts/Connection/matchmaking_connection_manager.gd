@@ -29,20 +29,18 @@ func _ready() -> void:
 	if OS.has_feature("dedicated_server"):
 		print("Starting dedicated server...")
 		timer = Timer.new()
-		timer.wait_time = 0.5  # Half a second
+		timer.wait_time = 0.5
 		timer.autostart = true
-		timer.one_shot = false  # Repeated calls every 0.5 seconds
+		timer.one_shot = false
 		timer.connect("timeout", _on_timer_timeout)
-		call_deferred("add_child", timer)  # Add timer as a child of the server
+		call_deferred("add_child", timer)
 		
 		create_server(port)
 	else:
 		print("Starting client...")
 		
 func _on_timer_timeout() -> void:
-	# Prepare the data to send (you can modify this to send any game state data)
 	for peer_id in multiplayer.get_peers():
-		# Send board data (both player's and opponent's)
 		var game_state = get_game_state(peer_id)
 		rpc_id(peer_id, "_receive_game_state", game_state)
 
@@ -51,13 +49,6 @@ func join_server(ip_address: String, port: int) -> void:
 	peer.create_client(ip_address, port)
 	multiplayer.multiplayer_peer = peer
 	print("Client connected to peer with ID: ", multiplayer.multiplayer_peer.get_unique_id())
-	
-	## Check connection status
-	#if peer.is_connection_failed():
-		#print("Failure to connect to " + ip_address + ":" + str(port))
-	#else:
-		#print("Connected to " + ip_address + ":" + str(port))
-		#get_tree().network_peer = peer 
 
 func start_matchmaking() -> void:
 	print(BackendConnectionManager.player_data)
@@ -65,10 +56,8 @@ func start_matchmaking() -> void:
 	username = BackendConnectionManager.player_data.get("username")
 	rating = BackendConnectionManager.player_data.get("rating", 1000)
 	
-	# Start polling immediately
 	send_matchmaking_request()
 	
-	# Set up timer for continuous polling
 	
 	if not polling_timer:
 		polling_timer = Timer.new()
@@ -77,7 +66,6 @@ func start_matchmaking() -> void:
 		polling_timer.timeout.connect(send_matchmaking_request)
 		call_deferred("add_child", polling_timer)
 	
-# Example function to load the level data from a JSON file
 func load_level_data() -> Dictionary:
 	var level_data = {}
 	var files = DirAccess.get_files_at(levels_folder)
@@ -110,7 +98,6 @@ func send_matchmaking_request() -> void:
 
 func _on_request_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	if response_code == 200:
-		# Still waiting, keep polling (timer will handle this)
 		print("Waiting for match...")
 		var json_data = {
 			"playerId": player_id
@@ -144,17 +131,16 @@ func _on_request_completed(_result: int, response_code: int, _headers: PackedStr
 					opponent_score = 0
 					opponent_board_state = null
 					client_timer = Timer.new()
-					client_timer.wait_time = 0.5  # Half a second
+					client_timer.wait_time = 0.5
 					client_timer.autostart = true
-					client_timer.one_shot = false  # Repeated calls every 0.5 seconds
+					client_timer.one_shot = false
 					client_timer.connect("timeout", send_data_to_server)
-					call_deferred("add_child", client_timer)  # Add timer as a child of the client
+					call_deferred("add_child", client_timer)
 		)
 		add_child(new_request)
 		new_request.request("http://localhost:3000/match/check", headers, HTTPClient.METHOD_POST, json_string)
 		
 	elif response_code == 202:
-		# Match found!
 		var json = JSON.new()
 		json.parse(body.get_string_from_utf8())
 		var response = json.get_data()
@@ -169,11 +155,9 @@ func _on_request_completed(_result: int, response_code: int, _headers: PackedStr
 			print("Players: ", players)
 			print("Connecting to port: ", port)
 			
-			# Stop polling
 			if polling_timer:
 				polling_timer.stop()
 			
-			# Connect to the game server
 			join_server("localhost", port)
 			board_data = null
 			board_state = null
@@ -181,11 +165,11 @@ func _on_request_completed(_result: int, response_code: int, _headers: PackedStr
 			opponent_score = 0
 			opponent_board_state = null
 			client_timer = Timer.new()
-			client_timer.wait_time = 0.5  # Half a second
+			client_timer.wait_time = 0.5
 			client_timer.autostart = true
-			client_timer.one_shot = false  # Repeated calls every 0.5 seconds
+			client_timer.one_shot = false
 			client_timer.connect("timeout", send_data_to_server)
-			call_deferred("add_child", client_timer)  # Add timer as a child of the client
+			call_deferred("add_child", client_timer)
 		else:
 			print("Invalid match response structure")
 	else:
@@ -194,13 +178,11 @@ func _on_request_completed(_result: int, response_code: int, _headers: PackedStr
 
 func send_data_to_server() -> void:
 	if server_peer_id != -1:
-		# Example of the data you want to send
 		var player_data = {}
 		player_data["id"] = player_id
 		player_data["board_state"] = board_state
 		player_data["score"] = score
-		# Send data to the server (peer_id 1 is typically the server in a 2-player setup)
-		rpc_id(server_peer_id, "receive_player_data", player_data)  # Call the server's function with the data
+		rpc_id(server_peer_id, "receive_player_data", player_data)
 		
 
 @rpc
@@ -255,7 +237,6 @@ func create_server(port: int) -> void:
 	else:
 		print("Error creating server:", res)
 
-# Handle a new client connection
 func _on_peer_connected(peer_id: int) -> void:
 	print("Peer connected: " + str(peer_id))
 	print("Current peer count: " + str(len(multiplayer.get_peers())))
@@ -264,7 +245,7 @@ func _on_peer_connected(peer_id: int) -> void:
 			server_peer_id = multiplayer.get_peers()[0]
 		if len(multiplayer.get_peers()) == MAX_CLIENTS:
 			
-			var level_data = load_level_data()  # Load level data from JSON file
+			var level_data = load_level_data()
 			_send_level_data_to_clients(level_data)
 			
 			level_timer = Timer.new()
@@ -278,7 +259,6 @@ func _on_level_timer_timeout():
 	for peer_id in multiplayer.get_peers():
 		rpc_id(peer_id, '_receive_level_end', scores[peer_id], scores[get_opponent_id(peer_id)])
 
-# Handle a client disconnection
 func _on_peer_disconnected(peer_id: int) -> void:
 	print("Peer " + str(peer_id) + " has disconnected")
 	if OS.has_feature("dedicated_server"):
