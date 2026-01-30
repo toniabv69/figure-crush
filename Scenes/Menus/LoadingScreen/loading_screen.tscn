@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dujqv35vavvgr"]
+
+[ext_resource type="Script" uid="uid://cr6rjg2sta0nt" path="res://Scripts/Menus/LoadingScreen/loading_screen.gd" id="1_7t3w0"]
+[ext_resource type="PackedScene" uid="uid://mcj3p0hbs81i" path="res://Scenes/Menus/Login/login_screen.tscn" id="2_f7006"]
+[ext_resource type="PackedScene" uid="uid://bsehg638ue7to" path="res://Scenes/Menus/Login/register_screen.tscn" id="3_7o03s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_38aua"]
+font_size = 160
+
+[sub_resource type="LabelSettings" id="LabelSettings_ve2vw"]
+font_size = 50
+
+[node name="LoadingScreen" type="Node2D"]
+script = ExtResource("1_7t3w0")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 283.0
+offset_top = 155.0
+offset_right = 807.0
+offset_bottom = 629.0
+text = "Figure Crush"
+label_settings = SubResource("LabelSettings_38aua")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="InfoLabel" type="Label" parent="."]
+offset_left = 110.0
+offset_top = 1581.0
+offset_right = 996.0
+offset_bottom = 1699.0
+text = "Loading..."
+label_settings = SubResource("LabelSettings_ve2vw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LoginScreen" parent="." instance=ExtResource("2_f7006")]
+
+[node name="RegisterScreen" parent="." instance=ExtResource("3_7o03s")]
+visible = false

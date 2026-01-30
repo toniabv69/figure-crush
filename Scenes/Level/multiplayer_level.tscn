@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://nor5x3fgcw5m"]
+
+[ext_resource type="Script" uid="uid://dm1elk30c4gjw" path="res://Scripts/Level/multiplayer_level.gd" id="1_6pubv"]
+[ext_resource type="Texture2D" uid="uid://tgowkertnlex" path="res://Assets/Textures/background.jpg" id="1_eklxq"]
+[ext_resource type="Script" uid="uid://dqyybqyaenepx" path="res://Scripts/Objects/board.gd" id="2_6pubv"]
+[ext_resource type="Script" uid="uid://c2k2vbavxdrbi" path="res://Scripts/Level/opponent_board.gd" id="4_i4uci"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i4uci"]
+font_size = 90
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2gsa"]
+font_size = 90
+
+[sub_resource type="LabelSettings" id="LabelSettings_6pubv"]
+font_size = 60
+
+[node name="MultiplayerLevel" type="Node2D"]
+script = ExtResource("1_6pubv")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(577, 1184)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("1_eklxq")
+
+[node name="Board" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 564.0
+offset_right = 1033.0
+offset_bottom = 1776.0
+script = ExtResource("2_6pubv")
+
+[node name="GridContainer" type="GridContainer" parent="Board"]
+layout_mode = 0
+offset_right = 993.0
+offset_bottom = 1212.0
+
+[node name="OpponentBoard" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 638.0
+offset_top = 1681.0
+offset_right = 1033.0
+offset_bottom = 2242.0
+script = ExtResource("4_i4uci")
+
+[node name="GridContainer" type="GridContainer" parent="OpponentBoard"]
+layout_mode = 0
+offset_right = 395.0
+offset_bottom = 561.0
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = 442.0
+offset_top = 335.0
+offset_right = 638.0
+offset_bottom = 514.0
+text = "90"
+label_settings = SubResource("LabelSettings_i4uci")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_top = 170.0
+offset_right = 1080.0
+offset_bottom = 330.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_h2gsa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OpponentScoreLabel" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 1994.0
+offset_right = 490.0
+offset_bottom = 2154.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_6pubv")
+vertical_alignment = 1

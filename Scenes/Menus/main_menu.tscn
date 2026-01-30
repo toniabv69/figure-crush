@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cktc2avyx67qw"]
+
+[ext_resource type="Script" uid="uid://cj2gkrk33586u" path="res://Scripts/Menus/main_menu.gd" id="1_38aua"]
+[ext_resource type="PackedScene" uid="uid://c6nq2r2f62618" path="res://Scenes/Menus/Settings/settings.tscn" id="2_pha2q"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_38aua")
+
+[node name="MatchmakeButton" type="Button" parent="."]
+offset_left = 341.0
+offset_top = 825.0
+offset_right = 763.0
+offset_bottom = 942.0
+theme_override_font_sizes/font_size = 50
+text = "Play Online"
+
+[node name="PlayLevelDebugButton" type="Button" parent="."]
+offset_left = 341.0
+offset_top = 1269.0
+offset_right = 763.0
+offset_bottom = 1386.0
+theme_override_font_sizes/font_size = 50
+text = "Play Offline"
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 763.0
+offset_right = 1067.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Settings" parent="." instance=ExtResource("2_pha2q")]
+visible = false
+
+[connection signal="button_up" from="MatchmakeButton" to="." method="_on_matchmake_button_button_up"]
+[connection signal="button_up" from="PlayLevelDebugButton" to="." method="_on_play_level_debug_button_button_up"]
+[connection signal="button_up" from="SettingsButton" to="." method="_on_settings_button_button_up"]

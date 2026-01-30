@@ -1,0 +1,107 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6nq2r2f62618"]
+
+[ext_resource type="Script" uid="uid://d0x66vovud4xd" path="res://Scripts/Menus/Settings/settings.gd" id="1_3txdf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3txdf"]
+font_size = 50
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d7euu"]
+font_size = 50
+
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_3txdf")
+
+[node name="LogoutButton" type="Button" parent="."]
+offset_left = 133.0
+offset_top = 657.0
+offset_right = 955.0
+offset_bottom = 821.0
+theme_override_font_sizes/font_size = 90
+text = "Logout"
+
+[node name="DeleteAccountButton" type="Button" parent="."]
+offset_left = 133.0
+offset_top = 1318.0
+offset_right = 955.0
+offset_bottom = 1482.0
+theme_override_font_sizes/font_size = 90
+text = "Delete Account"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 616.0
+offset_right = 1084.0
+offset_bottom = 164.0
+theme_override_font_sizes/font_size = 70
+text = "Back"
+
+[node name="InfoLabel" type="Label" parent="."]
+offset_left = 133.0
+offset_top = 1774.0
+offset_right = 955.0
+offset_bottom = 1892.0
+label_settings = SubResource("LabelSettings_3txdf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DeletePanel" type="Panel" parent="."]
+visible = false
+offset_top = 931.0
+offset_right = 1084.0
+offset_bottom = 1541.0
+
+[node name="PasswordLabel" type="Label" parent="DeletePanel"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 184.0
+offset_right = 465.0
+offset_bottom = 317.0
+text = "Password:"
+label_settings = SubResource("LabelSettings_d7euu")
+
+[node name="PasswordTextbox" type="TextEdit" parent="DeletePanel"]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 180.0
+offset_right = 996.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "..."
+
+[node name="ConfirmButton" type="Button" parent="DeletePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.123
+offset_left = 78.0
+offset_top = 387.0
+offset_right = 307.668
+offset_bottom = 493.0
+theme_override_font_sizes/font_size = 50
+text = "Confirm"
+
+[node name="BackButton" type="Button" parent="DeletePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.123
+offset_left = 616.0
+offset_top = 387.0
+offset_right = 845.66797
+offset_bottom = 493.0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="SureLabel" type="Label" parent="DeletePanel"]
+layout_mode = 0
+offset_right = 1084.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 60
+text = "Are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="LogoutButton" to="." method="_on_logout_button_button_up"]
+[connection signal="button_up" from="DeleteAccountButton" to="." method="_on_delete_account_button_button_up"]
+[connection signal="button_up" from="BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="button_up" from="DeletePanel/ConfirmButton" to="." method="_on_confirm_button_button_up"]
+[connection signal="button_up" from="DeletePanel/BackButton" to="." method="_on_delete_back_button_button_up"]

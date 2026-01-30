@@ -1,0 +1,109 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsehg638ue7to"]
+
+[ext_resource type="Script" uid="uid://doyunv81fwvwy" path="res://Scripts/Menus/Login/register_screen.gd" id="1_quwh6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_736pw"]
+font_size = 50
+
+[node name="RegisterScreen" type="Node2D"]
+script = ExtResource("1_quwh6")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 65.0
+offset_top = 163.0
+offset_right = 1015.0
+offset_bottom = 1422.0
+
+[node name="EmailLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 135.0
+offset_right = 466.0
+offset_bottom = 268.0
+text = "E-mail:"
+label_settings = SubResource("LabelSettings_736pw")
+
+[node name="PasswordLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 423.0
+offset_right = 378.0
+offset_bottom = 556.0
+text = "Password:"
+label_settings = SubResource("LabelSettings_736pw")
+
+[node name="EmailTextbox" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 133.0
+offset_right = 914.0
+offset_bottom = 217.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "example@example.com"
+
+[node name="PasswordTextbox" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 420.0
+offset_right = 905.0
+offset_bottom = 504.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "..."
+
+[node name="RegisterButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 865.0
+offset_right = 593.0
+offset_bottom = 953.0
+theme_override_font_sizes/font_size = 50
+text = "Register"
+
+[node name="AlreadyHaveAccountButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 1009.0
+offset_right = 767.0
+offset_bottom = 1097.0
+theme_override_font_sizes/font_size = 50
+text = "Already have an account?"
+
+[node name="UsernameLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 276.0
+offset_right = 364.0
+offset_bottom = 409.0
+text = "Username:"
+label_settings = SubResource("LabelSettings_736pw")
+
+[node name="UsernameTextbox" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 278.0
+offset_right = 907.0
+offset_bottom = 362.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "john_doe47"
+
+[node name="ConfirmLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 534.0
+offset_right = 368.0
+offset_bottom = 675.0
+text = "Confirm Password:"
+label_settings = SubResource("LabelSettings_736pw")
+autowrap_mode = 3
+
+[node name="ConfirmTextbox" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 573.0
+offset_right = 905.0
+offset_bottom = 657.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "..."
+
+[connection signal="button_up" from="Panel/RegisterButton" to="." method="_on_register_button_button_up"]
+[connection signal="button_up" from="Panel/AlreadyHaveAccountButton" to="." method="_on_already_have_account_button_button_up"]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://mcj3p0hbs81i"]
+
+[ext_resource type="Script" uid="uid://dwyjnrr8e0roh" path="res://Scripts/Menus/Login/login_screen.gd" id="1_hxmqg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_736pw"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_hxmqg"]
+font_size = 35
+font_color = Color(1, 0, 0, 1)
+
+[node name="LoginScreen" type="Node2D"]
+visible = false
+script = ExtResource("1_hxmqg")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 65.0
+offset_top = 163.0
+offset_right = 1015.0
+offset_bottom = 1422.0
+
+[node name="EmailLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 255.0
+offset_right = 457.0
+offset_bottom = 388.0
+text = "E-mail:"
+label_settings = SubResource("LabelSettings_736pw")
+
+[node name="PasswordLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 497.0
+offset_right = 370.0
+offset_bottom = 630.0
+text = "Password:"
+label_settings = SubResource("LabelSettings_736pw")
+
+[node name="EmailTextbox" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 254.0
+offset_right = 901.0
+offset_bottom = 338.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "example@example.com"
+
+[node name="PasswordTextbox" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 493.0
+offset_right = 901.0
+offset_bottom = 577.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "..."
+
+[node name="LoginButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 830.0
+offset_right = 596.0
+offset_bottom = 918.0
+theme_override_font_sizes/font_size = 50
+text = "Login"
+
+[node name="NoAccountButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 1005.0
+offset_right = 743.0
+offset_bottom = 1093.0
+theme_override_font_sizes/font_size = 50
+text = "Don't have an account?"
+
+[node name="InfoLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 630.0
+offset_right = 924.0
+offset_bottom = 748.0
+label_settings = SubResource("LabelSettings_hxmqg")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="button_up" from="Panel/LoginButton" to="." method="_on_login_button_button_up"]
+[connection signal="button_up" from="Panel/NoAccountButton" to="." method="_on_no_account_button_button_up"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=35 format=3 uid="uid://bo6fh478508cg"]
+
+[ext_resource type="Script" uid="uid://bly6f6tluobnq" path="res://Scripts/Objects/Pieces/piece.gd" id="1_pc3fx"]
+[ext_resource type="Texture2D" uid="uid://chhvrjn1humob" path="res://Assets/Textures/Pieces/red.png" id="2_q0mec"]
+[ext_resource type="Texture2D" uid="uid://cnsfb3tpxoggf" path="res://Assets/Textures/Pieces/blue.png" id="3_qbhdy"]
+[ext_resource type="Texture2D" uid="uid://2dapfcdcq7ve" path="res://Assets/Textures/Pieces/green.png" id="4_yo8cd"]
+[ext_resource type="Texture2D" uid="uid://bdv6ocwchyu8v" path="res://Assets/Textures/Pieces/yellow.png" id="5_831dv"]
+[ext_resource type="Texture2D" uid="uid://jichqejxp7k3" path="res://Assets/Textures/Pieces/purple.png" id="6_ymops"]
+[ext_resource type="Texture2D" uid="uid://ckk2yg5y3ctce" path="res://Assets/Textures/Pieces/pink.png" id="7_m8v4d"]
+[ext_resource type="Texture2D" uid="uid://bs7usdr6t5vvl" path="res://Assets/Textures/Pieces/orange.png" id="8_g0yj1"]
+[ext_resource type="Texture2D" uid="uid://up5rn7fjekew" path="res://Assets/Textures/Pieces/turquoise.png" id="9_4vrxl"]
+[ext_resource type="Texture2D" uid="uid://bqe22porhqeqs" path="res://Assets/Textures/Pieces/red_horizontal.png" id="10_emyhh"]
+[ext_resource type="Texture2D" uid="uid://d2hnsij11vge0" path="res://Assets/Textures/Pieces/blue_horizontal.png" id="11_8xp1n"]
+[ext_resource type="Texture2D" uid="uid://o4uom7apeyvy" path="res://Assets/Textures/Pieces/green_horizontal.png" id="12_g2exr"]
+[ext_resource type="Texture2D" uid="uid://b1xtp7q04hrf7" path="res://Assets/Textures/Pieces/yellow_horizontal.png" id="13_p0pyo"]
+[ext_resource type="Texture2D" uid="uid://1est8ikd5hty" path="res://Assets/Textures/Pieces/purple_horizontal.png" id="14_ef7mv"]
+[ext_resource type="Texture2D" uid="uid://ba46h4q3wewpw" path="res://Assets/Textures/Pieces/pink_horizontal.png" id="15_cnbs6"]
+[ext_resource type="Texture2D" uid="uid://ctjp0cpii5dc5" path="res://Assets/Textures/Pieces/orange_horizontal.png" id="16_4qju0"]
+[ext_resource type="Texture2D" uid="uid://ck38afyjvs3hi" path="res://Assets/Textures/Pieces/turquoise_horizontal.png" id="17_w32p0"]
+[ext_resource type="Texture2D" uid="uid://dl0n6ko2w8r2w" path="res://Assets/Textures/Pieces/red_vertical.png" id="18_a81r2"]
+[ext_resource type="Texture2D" uid="uid://vtlr1l8qchx4" path="res://Assets/Textures/Pieces/blue_vertical.png" id="19_an1hu"]
+[ext_resource type="Texture2D" uid="uid://com1o2ely2qdt" path="res://Assets/Textures/Pieces/green_vertical.png" id="20_y7lkl"]
+[ext_resource type="Texture2D" uid="uid://dmwcpf327vp7o" path="res://Assets/Textures/Pieces/yellow_vertical.png" id="21_nya10"]
+[ext_resource type="Texture2D" uid="uid://ctmrhdbrocrm0" path="res://Assets/Textures/Pieces/purple_vertical.png" id="22_g1s6o"]
+[ext_resource type="Texture2D" uid="uid://b0oqxgyctnfbf" path="res://Assets/Textures/Pieces/pink_vertical.png" id="23_jaoj7"]
+[ext_resource type="Texture2D" uid="uid://dy5h6yx842f57" path="res://Assets/Textures/Pieces/orange_vertical.png" id="24_f3ain"]
+[ext_resource type="Texture2D" uid="uid://dsi7ce8khjitv" path="res://Assets/Textures/Pieces/turquoise_vertical.png" id="25_dlc8j"]
+[ext_resource type="Texture2D" uid="uid://b7jluoa10nwru" path="res://Assets/Textures/Pieces/red_bomb.png" id="26_6xtu4"]
+[ext_resource type="Texture2D" uid="uid://bxw3kbj7c38d3" path="res://Assets/Textures/Pieces/blue_bomb.png" id="27_dnu8m"]
+[ext_resource type="Texture2D" uid="uid://d3pdrm5854767" path="res://Assets/Textures/Pieces/green_bomb.png" id="28_8ptmi"]
+[ext_resource type="Texture2D" uid="uid://bot585h4tme25" path="res://Assets/Textures/Pieces/yellow_bomb.png" id="29_hrkie"]
+[ext_resource type="Texture2D" uid="uid://dj47gq6d18elx" path="res://Assets/Textures/Pieces/purple_bomb.png" id="30_fsqhq"]
+[ext_resource type="Texture2D" uid="uid://bscaq5etfe3jt" path="res://Assets/Textures/Pieces/pink_bomb.png" id="31_rfl80"]
+[ext_resource type="Texture2D" uid="uid://yocd6r7jnwxw" path="res://Assets/Textures/Pieces/orange_bomb.png" id="32_t8w1n"]
+[ext_resource type="Texture2D" uid="uid://qftxs7bsvhch" path="res://Assets/Textures/Pieces/turquoise_bomb.png" id="33_ulv38"]
+[ext_resource type="Texture2D" uid="uid://bqte7p2pxcq65" path="res://Assets/Textures/Pieces/rainbow.png" id="34_6ds1i"]
+
+[node name="Piece" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("1_pc3fx")
+textures = Array[Texture2D]([ExtResource("2_q0mec"), ExtResource("3_qbhdy"), ExtResource("4_yo8cd"), ExtResource("5_831dv"), ExtResource("6_ymops"), ExtResource("7_m8v4d"), ExtResource("8_g0yj1"), ExtResource("9_4vrxl")])
+horizontal_textures = Array[Texture2D]([ExtResource("10_emyhh"), ExtResource("11_8xp1n"), ExtResource("12_g2exr"), ExtResource("13_p0pyo"), ExtResource("14_ef7mv"), ExtResource("15_cnbs6"), ExtResource("16_4qju0"), ExtResource("17_w32p0")])
+vertical_textures = Array[Texture2D]([ExtResource("18_a81r2"), ExtResource("19_an1hu"), ExtResource("20_y7lkl"), ExtResource("21_nya10"), ExtResource("22_g1s6o"), ExtResource("23_jaoj7"), ExtResource("24_f3ain"), ExtResource("25_dlc8j")])
+bomb_textures = Array[Texture2D]([ExtResource("26_6xtu4"), ExtResource("27_dnu8m"), ExtResource("28_8ptmi"), ExtResource("29_hrkie"), ExtResource("30_fsqhq"), ExtResource("31_rfl80"), ExtResource("32_t8w1n"), ExtResource("33_ulv38")])
+rainbow_texture = ExtResource("34_6ds1i")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

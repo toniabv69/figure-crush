@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://w2yvqnreae0n"]
+
+[ext_resource type="Script" uid="uid://kohfm71otvmn" path="res://Scripts/Level/level.gd" id="1_1ov45"]
+[ext_resource type="Texture2D" uid="uid://tgowkertnlex" path="res://Assets/Textures/background.jpg" id="2_lscpc"]
+[ext_resource type="Script" uid="uid://dqyybqyaenepx" path="res://Scripts/Objects/board.gd" id="3_lscpc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lscpc"]
+font_size = 90
+
+[sub_resource type="LabelSettings" id="LabelSettings_06ioy"]
+font_size = 90
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_1ov45")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(577, 1184)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("2_lscpc")
+
+[node name="Board" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 564.0
+offset_right = 1033.0
+offset_bottom = 1831.0
+script = ExtResource("3_lscpc")
+
+[node name="GridContainer" type="GridContainer" parent="Board"]
+layout_mode = 0
+offset_right = 993.0
+offset_bottom = 1267.0
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = 442.0
+offset_top = 335.0
+offset_right = 638.0
+offset_bottom = 514.0
+text = "90"
+label_settings = SubResource("LabelSettings_lscpc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 90.0
+one_shot = true
+autostart = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_top = 170.0
+offset_right = 1080.0
+offset_bottom = 330.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_06ioy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

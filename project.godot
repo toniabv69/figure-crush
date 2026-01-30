@@ -11,14 +11,24 @@ config_version=5
 [application]
 
 config/name="Figure Crush"
-run/main_scene="uid://b2pp3wpm88tr4"
+run/main_scene="uid://dujqv35vavvgr"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-ConnectionManager="*res://Scripts/Connection/connection_manager.gd"
+MatchmakingConnectionManager="*res://Scripts/Connection/matchmaking_connection_manager.gd"
+BackendConnectionManager="*res://Scripts/Connection/backend_connection_manager.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=2400
+window/stretch/mode="viewport"
+window/handheld/orientation=1
+window/vsync/vsync_mode=0
 
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
