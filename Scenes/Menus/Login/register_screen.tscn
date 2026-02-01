@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsehg638ue7to"]
+[gd_scene load_steps=4 format=3 uid="uid://bsehg638ue7to"]
 
 [ext_resource type="Script" uid="uid://doyunv81fwvwy" path="res://Scripts/Menus/Login/register_screen.gd" id="1_quwh6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_736pw"]
 font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_quwh6"]
+font_size = 35
+font_color = Color(1, 0, 0, 1)
 
 [node name="RegisterScreen" type="Node2D"]
 script = ExtResource("1_quwh6")
@@ -104,6 +108,17 @@ offset_right = 905.0
 offset_bottom = 657.0
 theme_override_font_sizes/font_size = 40
 placeholder_text = "..."
+
+[node name="InfoLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 711.0
+offset_right = 918.0
+offset_bottom = 829.0
+label_settings = SubResource("LabelSettings_quwh6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="button_up" from="Panel/RegisterButton" to="." method="_on_register_button_button_up"]
 [connection signal="button_up" from="Panel/AlreadyHaveAccountButton" to="." method="_on_already_have_account_button_button_up"]
