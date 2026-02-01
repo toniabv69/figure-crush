@@ -11,9 +11,9 @@ var piece_scene: PackedScene = preload("res://Scenes/Objects/Pieces/piece.tscn")
 func _ready():
 	setup_board()
 	timer = Timer.new()
-	timer.wait_time = 0.5  # Half a second
+	timer.wait_time = 0.5
 	timer.autostart = true
-	timer.one_shot = false  # Repeated calls every 0.5 seconds
+	timer.one_shot = false
 	timer.connect("timeout", send_data_to_matchmaker)
 	%Board.multiplayer_on = true
 

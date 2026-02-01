@@ -63,17 +63,13 @@ func get_valid_piece_type(x: int, y: int) -> Piece.Type:
 	return candidates.pick_random()
 
 func scale_grid_to_screen():
-	# Ensure the GridContainer matches the Board's size
 	grid.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	
-	# We must wait for the container to update its size or use the parent's size
 	var board_size = size 
 	
-	# Account for separation if you haven't set them to 0
 	var h_sep = grid.get_theme_constant("h_separation")
 	var v_sep = grid.get_theme_constant("v_separation")
 	
-	# Calculate cell size subtracting the gaps between cells
 	var cell_width = (board_size.x - (h_sep * (width - 1))) / width
 	var cell_height = (board_size.y - (v_sep * (height - 1))) / height
 	var cell_size = Vector2(cell_width, cell_height)
@@ -83,19 +79,15 @@ func scale_grid_to_screen():
 			var space = spaces[y][x]
 
 func scale_piece_to_cell(piece: TextureRect, cell_size: Vector2):
-	# Make the piece slightly smaller than the cell (75%)
 	var piece_size = cell_size * 0.75
 
-	# Set the TextureRect size
 	piece.size = piece_size
 
-	# Set anchors to center the piece in the cell
 	piece.anchor_left = 0.5
 	piece.anchor_top = 0.5
 	piece.anchor_right = 0.5
 	piece.anchor_bottom = 0.5
 
-	# Use offsets to center the piece
 	piece.offset_left = -piece_size.x / 2
 	piece.offset_top = -piece_size.y / 2
 	piece.offset_right = piece_size.x / 2
@@ -196,7 +188,6 @@ func swap_spaces(a: GridSpace, b: GridSpace):
 func find_matches() -> Array:
 	var matches := []
 
-	# Horizontal
 	for y in height:
 		var run := []
 		for x in width:
@@ -212,7 +203,6 @@ func find_matches() -> Array:
 		if run.size() >= 3:
 			matches.append(run)
 
-	# Vertical
 	for x in width:
 		var run := []
 		for y in height:
@@ -353,42 +343,35 @@ func clear_space(space: GridSpace):
 		space.piece = null
 
 func has_available_move() -> bool:
-	# Iterate over all spaces in the grid
 	for y in range(height):
 		for x in range(width):
 			var space = spaces[y][x]
 			
-			# Check adjacent spaces for potential swaps
-			if x < width - 1:  # Check right neighbor
+			if x < width - 1:
 				var swap1 = spaces[y][x + 1]
 				if swap_possible(space, swap1):
 					return true
 
-			if y < height - 1:  # Check bottom neighbor
+			if y < height - 1:
 				var swap2 = spaces[y + 1][x]
 				if swap_possible(space, swap2):
 					return true
 
 	return false
 
-# Check if a swap between two pieces results in a valid match
+
 func swap_possible(space1: GridSpace, space2: GridSpace) -> bool:
-	# Swap the pieces temporarily
 	var piece1 = space1.piece
 	var piece2 = space2.piece
 
-	# Swap the pieces
 	space1.piece = piece2
 	space2.piece = piece1
 
-	# Check if any matches were formed
 	var matches = find_matches()
 
-	# Undo the swap
 	space1.piece = piece1
 	space2.piece = piece2
 
-	# Return whether a match was found
 	return not matches.is_empty()
 
 				
